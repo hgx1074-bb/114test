@@ -49,45 +49,34 @@
   background: var(--card-bg);
   border-radius: 16px;
   padding: 40px;
-  
-  /* 2. 這是磨砂玻璃的最關鍵核心：讓卡片後方景物模糊 */
+
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); /* 確保 Safari 瀏覽器也能正常顯示 */
-
-  /* 3. 加上一道非常細微的白色半透明邊框，會讓玻璃的邊緣質感更真實 */
+  -webkit-backdrop-filter: blur(12px);
   border: 4px solid rgba(0, 153, 255, 0.4);
-
-  /* 4. 調整陰影：玻璃質感的陰影通常要比普通卡片更柔和、更淡一些 */
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   
   text-align: center;
   display: none;
   animation: fadeIn 0.5s ease;
 }
-
-    /* 顯示特定區塊的 Class */
     .card.active {
       display: block;
     }
-
     @keyframes fadeIn {
       from {
         opacity: 0;
         transform: translateY(10px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-
     h1,
     h2 {
       margin-bottom: 24px;
       color: #2d3436;
     }
-
     p {
       font-size: 1.1rem;
       line-height: 1.6;
@@ -95,35 +84,23 @@
       margin-bottom: 30px;
     }
 
-    /* 按鈕樣式 */
 .btn {
   font-family: 'Cubic 11', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Microsoft JhengHei";
   
-  /* 1. 關鍵：不要用 var(--primary-color)，改成半透明的紫色 (RGBA) */
-  /* 108, 92, 231 是你原本紫色的 RGB 碼，0.3 代表 30% 透明度 */
   background-color: rgba(23, 0, 194, 0.507);
-  
-  /* 2. 關鍵：磨砂效果要放在本體，讓它隨時都維持模糊 */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-
-  /* 3. 建議加上一道微透明的邊框，玻璃質感才會亮起來 */
   border: 1px solid rgba(255, 255, 255, 0.3);
   
   color: white;
   padding: 14px 32px;
   font-size: 1rem;
-  border-radius:50px; /* 想更圓可以改成 50px */
+  border-radius:50px;
   cursor: pointer;
   font-weight: bold;
-  
-  /* 確保顏色變換時有平滑的過渡動畫 */
   transition: background-color 0.3s, transform 0.1s, border-color 0.3s;
 }
-
-/* 滑鼠移上去時的視覺反饋 */
 .btn:hover {
-  /* 滑鼠移上去時，讓半透明紫色變深一點（從 0.3 變成 0.5） */
   background-color: rgba(115, 231, 92, 0.5);
   border-color: rgba(255, 255, 255, 0.6);
 }
@@ -136,8 +113,6 @@
       background-color: #b2bec3;
       cursor: not-allowed;
     }
-
-    /* 選項群組 */
     .options-group {
       text-align: left;
       margin-bottom: 30px;
@@ -157,20 +132,14 @@
     .option-label:hover {
       background: #e4e7eb;
     }
-
-    /* 隱藏原生 radio，用 label 做漂亮樣式 */
     .option-label input[type="radio"] {
       margin-right: 12px;
       transform: scale(1.2);
     }
-
-    /* 選取後的樣式 */
     .option-label.selected {
       border-color: var(--primary-color);
       background-color: #eeebff;
     }
-
-    /* 載入中動畫 (Spinner) */
     .loader {
       border: 4px solid #f3f3f3;
       border-top: 4px solid var(--primary-color);
@@ -210,22 +179,21 @@
     <div id="view-q1" class="card">
       <h2>1.身為冒險者，要選擇一條格言作為你的信條，那會是什麼？</h2>
       <div class="options-group">
-        <label class="option-label"><input type="radio" name="q1" value="GUARDIAN,WARRIOR"> A. 拳頭至上。</label>
-        <label class="option-label"><input type="radio" name="q1" value="SERAPH,DRUID"> B. 神的祝福將照亮所有人的面龐。</label>
-        <label class="option-label"><input type="radio" name="q1" value="WIZARD,SORCERER,BARD"> C.
-          知識是我的利刃，思考是敞開真實門扉的鑰匙。</label>
-        <label class="option-label"><input type="radio" name="q1" value="RANGER,ROGUE"> D. 在對方反應過來之前，取得優勢。</label>
+        <label class="option-label"><input type="radio" name="q1" value="GUARDIAN,WARRIOR">拳頭至上。</label>
+        <label class="option-label"><input type="radio" name="q1" value="SERAPH,DRUID">神的祝福將照亮所有人的面龐。</label>
+        <label class="option-label"><input type="radio" name="q1" value="WIZARD,SORCERER,BARD">知識是我的利刃，思考是敞開真實門扉的鑰匙。</label>
+        <label class="option-label"><input type="radio" name="q1" value="RANGER,ROGUE"> 在對方反應過來之前，取得優勢。</label>
       </div>
       <button class="btn" id="next-q1" onclick="switchView('view-q2')" disabled>下一步</button>
     </div>
 
     <div id="view-q2" class="card">
-      <h2>2.有人失足了，在懸崖邊搖搖欲墜，你想如何幫助他？</h2>
+      <h2>有人失足了，在懸崖邊搖搖欲墜，而你在懸崖底部，你想如何幫助他？</h2>
       <div class="options-group">
-        <label class="option-label"><input type="radio" name="q2" value="RANGER,ROGUE"> A. 閃開</label>
-        <label class="option-label"><input type="radio" name="q2" value="WIZARD,DRUID,SORCERER"> B. 用身邊的元素製作緩衝物</label>
-        <label class="option-label"><input type="radio" name="q2" value="BARD,SERAPH"> C. 為他哀悼</label>
-        <label class="option-label"><input type="radio" name="q2" value="GUARDIAN,WARRIOR"> D. 肉身接住他</label>
+        <label class="option-label"><input type="radio" name="q2" value="RANGER,ROGUE">閃開</label>
+        <label class="option-label"><input type="radio" name="q2" value="WIZARD,DRUID,SORCERER">用身邊的元素製作緩衝物</label>
+        <label class="option-label"><input type="radio" name="q2" value="BARD,SERAPH">為他哀悼</label>
+        <label class="option-label"><input type="radio" name="q2" value="GUARDIAN,WARRIOR">肉身接住他</label>
       </div>
       <button class="btn" id="next-q2" onclick="switchView('view-q3')" disabled>下一步</button>
     </div>
@@ -233,10 +201,10 @@
     <div id="view-q3" class="card">
       <h2>選一個你喜歡的武器吧！</h2>
       <div class="options-group">
-        <label class="option-label"><input type="radio" name="q3" value="RANGER,ROGUE"> A. 匕首</label>
-        <label class="option-label"><input type="radio" name="q3" value="GUARDIAN,WARRIOR,SERAPH"> B. 戰斧</label>
-        <label class="option-label"><input type="radio" name="q3" value="DRUID,WIZARD"> C. 法杖</label>
-        <label class="option-label"><input type="radio" name="q3" value="BARD,SORCERER"> D. 法典</label>
+        <label class="option-label"><input type="radio" name="q3" value="RANGER,ROGUE">匕首</label>
+        <label class="option-label"><input type="radio" name="q3" value="GUARDIAN,WARRIOR,SERAPH">戰斧</label>
+        <label class="option-label"><input type="radio" name="q3" value="DRUID,WIZARD">法杖</label>
+        <label class="option-label"><input type="radio" name="q3" value="BARD,SORCERER">法典</label>
       </div>
       <button class="btn" id="next-q3" onclick="switchView('view-q4')" disabled>下一步</button>
     </div>
@@ -245,10 +213,10 @@
     <div id="view-q4" class="card">
       <h2>4.有盜賊襲擊你與隊友的馬車，戰鬥開始了，請問你更傾向於站在哪個地方？</h2>
       <div class="options-group">
-        <label class="option-label"><input type="radio" name="q4" value="WIZARD,SORCERER"> A. 站得遠遠的</label>
-        <label class="option-label"><input type="radio" name="q4" value="GUARDIAN,WARRIOR,SERAPH"> B. 肉身搏擊</label>
-        <label class="option-label"><input type="radio" name="q4" value="RANGER,BARD,SERAPH"> C. 中間距離</label>
-        <label class="option-label"><input type="radio" name="q4" value="ROGUE,DRUID"> D. 隱密的地方</label>
+        <label class="option-label"><input type="radio" name="q4" value="WIZARD,SORCERER">站得遠遠的</label>
+        <label class="option-label"><input type="radio" name="q4" value="GUARDIAN,WARRIOR,SERAPH">肉身搏擊</label>
+        <label class="option-label"><input type="radio" name="q4" value="RANGER,BARD,SERAPH">中間距離</label>
+        <label class="option-label"><input type="radio" name="q4" value="ROGUE,DRUID">隱密的地方</label>
       </div>
       <button class="btn" id="next-q4" onclick="switchView('view-q5')" disabled>下一步</button>
     </div>
@@ -257,10 +225,10 @@
     <div id="view-q5" class="card">
       <h2>你在團隊中傾向於扮演什麼樣的角色？</h2>
       <div class="options-group">
-        <label class="option-label"><input type="radio" name="q5" value="GUARDIAN"> A.守護者</label>
-        <label class="option-label"><input type="radio" name="q5" value="WARRIOR"> B.進攻者</label>
-        <label class="option-label"><input type="radio" name="q5" value="SERAPH"> C.治癒者</label>
-        <label class="option-label"><input type="radio" name="q5" value="BARD"> D.表演者</label>
+        <label class="option-label"><input type="radio" name="q5" value="GUARDIAN">守護者</label>
+        <label class="option-label"><input type="radio" name="q5" value="WARRIOR">進攻者</label>
+        <label class="option-label"><input type="radio" name="q5" value="SERAPH">治癒者</label>
+        <label class="option-label"><input type="radio" name="q5" value="BARD">表演者</label>
       </div>
       <button class="btn" id="next-q5" onclick="switchView('view-q6')" disabled>下一步</button>
     </div>
@@ -269,10 +237,10 @@
     <div id="view-q6" class="card">
       <h2>你對大自然的態度是？</h2>
       <div class="options-group">
-        <label class="option-label"><input type="radio" name="q6" value="DRUID"> A.是生命與萬物的本源</label>
-        <label class="option-label"><input type="radio" name="q6" value="RANGER"> B.是最好的獵場與庇護所</label>
-        <label class="option-label"><input type="radio" name="q6" value="ROGUE,WIZARD"> C.充滿危險與未知，更喜歡待在文明的世界</label>
-        <label class="option-label"><input type="radio" name="q6" value="SORCERER,BARD"> D.蘊含著狂暴而純粹的原始魔力</label>
+        <label class="option-label"><input type="radio" name="q6" value="DRUID">是生命與萬物的本源</label>
+        <label class="option-label"><input type="radio" name="q6" value="RANGER">是最好的獵場與庇護所</label>
+        <label class="option-label"><input type="radio" name="q6" value="ROGUE,WIZARD">充滿危險與未知，更喜歡待在文明的世界</label>
+        <label class="option-label"><input type="radio" name="q6" value="SORCERER,BARD">蘊含著狂暴而純粹的原始魔力</label>
       </div>
       <button class="btn" id="next-q6" onclick="switchView('view-q7')" disabled>下一步</button>
     </div>
@@ -281,72 +249,56 @@
     <div id="view-q7" class="card">
       <h2>調查階段，來到了一家龍蛇混雜的地下酒館，你會怎麼著手蒐集情報？</h2>
       <div class="options-group">
-        <label class="option-label"><input type="radio" name="q7" value="WARRIOR,ROGUE"> A. 找看起來最跩的人，用氣勢威脅他開口。</label>
+        <label class="option-label"><input type="radio" name="q7" value="WARRIOR,ROGUE">找看起來最跩的人，用氣勢威脅他開口。</label>
 
-        <label class="option-label"><input type="radio" name="q7" value="GUARDIAN,SERAPH"> B. 透過幫助酒館的弱者來換取信任與線索。</label>
+        <label class="option-label"><input type="radio" name="q7" value="GUARDIAN,SERAPH">透過幫助酒館的弱者來換取信任與線索。</label>
 
-        <label class="option-label"><input type="radio" name="q7" value="WIZARD,SORCERER,RANGER"> C.
-          找個角落坐下，默默傾聽與觀察。</label>
+        <label class="option-label"><input type="radio" name="q7" value="WIZARD,SORCERER,RANGER">找個角落坐下，默默傾聽與觀察。</label>
 
-        <label class="option-label"><input type="radio" name="q7" value="BARD,DRUID"> D.走向吧台請全場喝一杯，用流暢的口才打聽小道消息。</label>
+        <label class="option-label"><input type="radio" name="q7" value="BARD,DRUID">走向吧台請全場喝一杯，用流暢的口才打聽小道消息。</label>
       </div>
 
-      <button class="btn" id="next-q7" onclick="handleSubmit()" disabled>送出答案</button>
+      <button class="btn" id="next-q7" onclick="handleSubmit()" disabled>完成冒險</button>
     </div>
     <div id="view-loading" class="card">
-      <h2>結果計算中...</h2>
-      <p>正在分析你的選擇，請稍候</p>
+      <h2>LOADING...</h2>
+      <p>正在找尋最適合你的職業</p>
       <div class="loader"></div>
     </div>
 
     <div id="view-result" class="card">
-      <h1>你的測驗結果</h1>
+      <h1>測驗結果</h1>
       <div id="result-content">
       </div>
       <br>
-      <button class="btn" onclick="restartQuiz()">再測一次</button>
     </div>
 
   </div>
 
   <script>
-    // 頁面切換核心函式
     function switchView(viewId) {
-      // 隱藏所有卡片
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => card.classList.remove('active'));
-
-      // 顯示指定的卡片
       const targetCard = document.getElementById(viewId);
       if (targetCard) {
         targetCard.classList.add('active');
       }
     }
-
-    // 監聽所有選項的點擊事件（優化 UI 互動：未選取時不能按下一步，選取後加亮顯色）
     const allLabels = document.querySelectorAll('.option-label');
     allLabels.forEach(label => {
       label.addEventListener('click', function () {
-        // 找到當前題目內的所有 label 並移除 selected 樣式
         const group = this.closest('.options-group');
         group.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
-
-        // 為當前點擊的加色
         this.classList.add('selected');
-
-        // 啟用該題的「下一步」按鈕
         const currentCard = this.closest('.card');
         const nextBtn = currentCard.querySelector('.btn');
         if (nextBtn) nextBtn.disabled = false;
       });
     });
 
-    // 處理送出後的邏輯與模擬計算中
-    function handleSubmit() {
-      // 1. 切換到載入中畫面
-      switchView('view-loading');
 
-      // 2. 蒐集答案
+    function handleSubmit() {
+      switchView('view-loading');
       const q1 = document.querySelector('input[name="q1"]:checked')?.value;
       const q2 = document.querySelector('input[name="q2"]:checked')?.value;
       const q3 = document.querySelector('input[name="q3"]:checked')?.value;
@@ -354,19 +306,14 @@
       const q5 = document.querySelector('input[name="q5"]:checked')?.value;
       const q6 = document.querySelector('input[name="q6"]:checked')?.value;
       const q7 = document.querySelector('input[name="q7"]:checked')?.value;
-
-      // 3. 模擬 2 秒鐘的計算延遲，再跳轉到結果頁面
       setTimeout(() => {
         calculateResult(q1, q2, q3, q4, q5, q6, q7);
         switchView('view-result');
       }, 2000);
     }
 
-    // 簡單的結果計算邏輯（可依據需求自行擴充複雜算式）
     function calculateResult(q1, q2, q3, q4, q5, q6, q7) {
       const resultContent = document.getElementById('result-content');
-
-      // 1. 初始化你的屬性計分板
       const scores = {
         BARD: 0,
         DRUID: 0,
@@ -377,18 +324,13 @@
         SORCERER: 0,
         WARRIOR: 0,
         WIZARD: 0,
-
       };
 
-      // 2. 將收集到的答案（此時答案會是 "STR"、"DEX" 等字串）放入陣列
       const answers = [q1, q2, q3, q4, q5, q6, q7];
 
       answers.forEach(ans => {
         if (ans) {
-          // 如果答案裡面有逗號（例如 "GUARDIAN,WARRIOR"），就把它們切開成陣列
           const statsToIncrease = ans.split(',');
-
-          // 跑迴圈把切開的每一個參數都 +1 分
           statsToIncrease.forEach(stat => {
             if (scores[stat] !== undefined) {
               scores[stat]++;
@@ -397,7 +339,6 @@
         }
       });
 
-      // 4. 找出最高得分的屬性
       let highestStat = 'WARRIOR';
       let maxCount = -1;
       for (const [stat, value] of Object.entries(scores)) {
@@ -407,7 +348,6 @@
         }
       }
 
-      // 5. 根據最高得分的屬性，決定顯示的結果
       let title = "";
       let description = "";
 
@@ -491,32 +431,13 @@
             "<img src='https://d86r0kucmu7n2.cloudfront.net/wp-content/themes/heartofdaggers/theme/inc/images/classes/sorcerer-class.jpg' alt='SORCERER' style='width:100%; max-width:250px; height:auto; display:block; margin:20px auto; border:3px solid #000;'>";
           break;
       }
-
-      // 6. 將結果渲染到畫面上
       resultContent.innerHTML = `
         <h2 style="color: var(--accent-yellow); font-size: 1.8rem; background: #000; padding: 10px; border-radius: 4px;">${title}</h2>
         <p style="text-align: left; background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 5px solid var(--primary-color);">
             ${description}
         </p>
     `;
-    }
-    // 重設測驗
-    function restartQuiz() {
-      // 清空所有選取的 radio
-      const radios = document.querySelectorAll('input[type="radio"]');
-      radions.forEach(radio => radio.checked = false);
-
-      // 移除所有選取樣式
-      allLabels.forEach(label => label.classList.remove('selected'));
-
-      // 重新禁用下一步按鈕
-      for (let i = 1; i <= 4; i++) {
-        document.getElementById(`next-q${i}`).disabled = true;
-      }
-
-      // 返回首頁
-      switchView('view-welcome');
-    }
+    }   
   </script>
 
 </body>
