@@ -15,8 +15,6 @@
     :root {
   --primary-color: #6c5ce7;
   --bg-color: #8ae8ff;
-  /* 1. 將卡片底色改成帶有透明度的白色 (RGBA) */
-  /* 0.65 代表 65% 的不透明度，你可以根據 GIF 的花色自由調整這個數值 */
   --card-bg: rgba(255, 255, 255, 0.65); 
   --text-color: #000000;
 }
@@ -113,33 +111,65 @@
       background-color: #b2bec3;
       cursor: not-allowed;
     }
-    .options-group {
-      text-align: left;
-      margin-bottom: 30px;
-    }
+/* 選項群組外殼 */
+.options-group {
+  text-align: left;
+  margin-bottom: 30px;
+}
 
-    .option-label {
-      display: block;
-      background: #f1f2f6;
-      padding: 16px;
-      margin-bottom: 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: all 0.2s;
-    }
+/* 1. 選項方塊本體（預設狀態） */
+.option-label {
+  display: block;
+  
+  /* 改成極輕量的白玻璃半透明底色（10% 不透明度） */
+  background: rgba(255, 255, 255, 0.1); 
+  
+  /* 加上淡淡的磨砂模糊效果 */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  
+  /* 微弱的白邊框，勾勒出玻璃邊緣 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 12px; /* 稍微加圓一點更具現代感 */
+  cursor: pointer;
+  
+  /* 讓顏色、邊框、陰影在變換時都有細緻的平滑動畫 */
+  transition: all 0.25s ease;
+}
 
-    .option-label:hover {
-      background: #e4e7eb;
-    }
-    .option-label input[type="radio"] {
-      margin-right: 12px;
-      transform: scale(1.2);
-    }
-    .option-label.selected {
-      border-color: var(--primary-color);
-      background-color: #eeebff;
-    }
+/* 2. 當滑鼠移上去時（Hover 狀態） */
+.option-label:hover {
+  /* 玻璃底色稍微加亮一點點 */
+  background: rgba(255, 255, 255, 0.25);
+  /* 邊框加亮 */
+  border-color: rgba(255, 255, 255, 0.5);
+  /* 加上淡淡的外發光效果，讓玩家知道自己指到這一題 */
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* 3. 當玩家點選該選項後（Selected 狀態） */
+/* 注意：這是透過 JS 動態加上去的 Class 喔！ */
+.option-label.selected {
+  /* 讓點選後的底色，帶有你原本的主色調（紫色）加半透明 */
+  background-color: rgba(108, 92, 231, 0.25);
+  
+  /* 邊框直接亮起亮紫色 */
+  border-color: var(--primary-color);
+  
+  /* 加上漂亮的紫色霓虹外發光效果 */
+  box-shadow: 0 0 15px rgba(108, 92, 231, 0.4);
+}
+
+/* 4. 選項內的原生圓點樣式微調 */
+.option-label input[type="radio"] {
+  margin-right: 12px;
+  transform: scale(1.2);
+  /* 讓單選小圓點的顏色在相容瀏覽器中也符合主色調 */
+  accent-color: var(--primary-color); 
+}
     .loader {
       border: 4px solid #f3f3f3;
       border-top: 4px solid var(--primary-color);
@@ -177,7 +207,7 @@
     </div>
 
     <div id="view-q1" class="card">
-      <h2>1.身為冒險者，要選擇一條格言作為你的信條，那會是什麼？</h2>
+      <h2>身為冒險者，要選擇一條格言作為你的信條，那會是什麼？</h2>
       <div class="options-group">
         <label class="option-label"><input type="radio" name="q1" value="GUARDIAN,WARRIOR">拳頭至上。</label>
         <label class="option-label"><input type="radio" name="q1" value="SERAPH,DRUID">神的祝福將照亮所有人的面龐。</label>
@@ -208,8 +238,6 @@
       </div>
       <button class="btn" id="next-q3" onclick="switchView('view-q4')" disabled>下一步</button>
     </div>
-
-    <!-- 4. 修改第四題的按鈕，讓它去第五題 -->
     <div id="view-q4" class="card">
       <h2>4.有盜賊襲擊你與隊友的馬車，戰鬥開始了，請問你更傾向於站在哪個地方？</h2>
       <div class="options-group">
@@ -220,8 +248,6 @@
       </div>
       <button class="btn" id="next-q4" onclick="switchView('view-q5')" disabled>下一步</button>
     </div>
-
-    <!-- 5. 新增第五題 -->
     <div id="view-q5" class="card">
       <h2>你在團隊中傾向於扮演什麼樣的角色？</h2>
       <div class="options-group">
@@ -232,8 +258,6 @@
       </div>
       <button class="btn" id="next-q5" onclick="switchView('view-q6')" disabled>下一步</button>
     </div>
-
-    <!-- 6. 新增第六題 -->
     <div id="view-q6" class="card">
       <h2>你對大自然的態度是？</h2>
       <div class="options-group">
@@ -244,8 +268,6 @@
       </div>
       <button class="btn" id="next-q6" onclick="switchView('view-q7')" disabled>下一步</button>
     </div>
-
-    <!-- 7. 新增第七題（最後一題，負責送出） -->
     <div id="view-q7" class="card">
       <h2>調查階段，來到了一家龍蛇混雜的地下酒館，你會怎麼著手蒐集情報？</h2>
       <div class="options-group">
