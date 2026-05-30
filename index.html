@@ -431,12 +431,13 @@
             "<img src='https://d86r0kucmu7n2.cloudfront.net/wp-content/themes/heartofdaggers/theme/inc/images/classes/sorcerer-class.jpg' alt='SORCERER' style='width:100%; max-width:250px; height:auto; display:block; margin:20px auto; border:3px solid #000;'>";
           break;
       }
-      resultContent.innerHTML = `
-        <h2 style="color: var(--accent-yellow); font-size: 1.8rem; padding: 10px; border-radius: 4px;">${title}</h2>
-        <p style="text-align: left; background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 5px solid var(--primary-color);">
-            ${description}
-        </p>
-    `;
+   resultContent.innerHTML = `
+    <h2 style="color: var(--text-color); font-size: 1.8rem; padding: 10px; margin-bottom: 10px;">${title}</h2>
+    
+    <p style="text-align: left; background: transparent; padding: 10px; color: var(--text-color); line-height: 1.6;">
+        ${description}
+    </p>
+`;
     }   
   </script>
 
